@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dashboard King 👑 | Karl Marti Tribute</title>
+    <meta name="description" content="A legendary tribute to the Dashboard King - Karl Marti">
+    <meta property="og:title" content="The Dashboard King 👑 | Karl Marti Tribute">
+    <meta property="og:description" content="Celebrating the man who put dashboards on dashboards">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Particle Background -->
+    <canvas id="particles"></canvas>
+    
+    <!-- Crown floating animation -->
+    <div class="floating-crowns" aria-hidden="true"></div>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-container">
+        
+        <!-- Header Section -->
+        <header class="hero-header">
+            <div class="title-badge">
+                <span class="badge-text">BREAKING NEWS</span>
+            </div>
+            <h1 class="main-title">
+                <span class="crown-icon">👑</span>
+                <span class="title-text">The Dashboard King</span>
+                <span class="crown-icon">👑</span>
+            </h1>
+            <h2 class="subtitle">
+                <span class="highlight">Karl Marti</span> — Final Achievement Unlocked
+            </h2>
+            <p class="tagline">"If it exists, it deserves a dashboard" — Karl Marti, probably</p>
+            
+            <div class="departure-countdown" id="countdown">
+                <div class="countdown-label">Time until the dashboards stop multiplying:</div>
+                <div class="countdown-timer">
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="days">00</span>
+                        <span class="countdown-unit">Days</span>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="hours">00</span>
+                        <span class="countdown-unit">Hours</span>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="minutes">00</span>
+                        <span class="countdown-unit">Minutes</span>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="seconds">00</span>
+                        <span class="countdown-unit">Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Overview -->
+        <section class="stats-overview">
+            <div class="stat-card featured" data-stat="dashboards">
+                <div class="stat-icon">📊</div>
+                <div class="stat-value counting" data-target="147">0</div>
+                <div class="stat-label">Dashboards Created</div>
+                <div class="stat-sublabel">This month alone: 23</div>
+            </div>
+            <div class="stat-card" data-stat="meetings">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-value counting" data-target="89">0</div>
+                <div class="stat-label">% of Achievements</div>
+                <div class="stat-sublabel">By Karl. Team combined: 11%</div>
+            </div>
+            <div class="stat-card" data-stat="coffee">
+                <div class="stat-icon">☕</div>
+                <div class="stat-value counting" data-target="2341">0</div>
+                <div class="stat-label">Coffees Consumed</div>
+                <div class="stat-sublabel">While building dashboards</div>
+            </div>
+            <div class="stat-card" data-stat="graphs">
+                <div class="stat-icon">📈</div>
+                <div class="stat-value counting" data-target="12">0</div>
+                <div class="stat-label">Graphs Per Dashboard</div>
+                <div class="stat-sublabel">Industry avg: 3</div>
+            </div>
+        </section>
+
+        <!-- Achievement Categories Navigation -->
+        <nav class="achievement-nav">
+            <button class="nav-btn active" data-category="all">🏆 All Achievements</button>
+            <button class="nav-btn" data-category="legendary">👑 Legendary</button>
+            <button class="nav-btn" data-category="epic">⚡ Epic</button>
+            <button class="nav-btn" data-category="rare">💎 Rare</button>
+            <button class="nav-btn" data-category="common">🌟 Common</button>
+        </nav>
+
+        <!-- Achievement Grid -->
+        <section class="achievement-section">
+            <h2 class="section-title">
+                <span class="title-icon">🏆</span>
+                Team Achievements Registry
+                <span class="title-badge-small">v4.2.0 — Final Release</span>
+            </h2>
+            
+            <div class="achievement-grid" id="achievementGrid">
+                <!-- Achievements will be injected by JS -->
+            </div>
+        </section>
+
+        <!-- Leaderboard Section -->
+        <section class="leaderboard-section">
+            <h2 class="section-title">
+                <span class="title-icon">📊</span>
+                Achievement Leaderboard
+                <span class="title-badge-small">Real-time™</span>
+            </h2>
+            
+            <div class="leaderboard-container">
+                <div class="leaderboard-header">
+                    <span class="col-rank">Rank</span>
+                    <span class="col-name">Team Member</span>
+                    <span class="col-achievements">Achievements</span>
+                    <span class="col-progress">Progress</span>
+                </div>
+                <div class="leaderboard-body" id="leaderboard">
+                    <!-- Leaderboard items injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Module Performance -->
+        <section class="modules-section">
+            <h2 class="section-title">
+                <span class="title-icon">⚙️</span>
+                Module Contribution Matrix
+            </h2>
+            
+            <div class="module-grid">
+                <div class="module-card" data-module="tariff-cache">
+                    <div class="module-header">
+                        <span class="module-icon">🚀</span>
+                        <span class="module-name">tariff-cache</span>
+                    </div>
+                    <div class="module-subtitle">Parking Rate Calculation Engine</div>
+                    <div class="module-leader">
+                        <span class="leader-label">Dashboard Coverage:</span>
+                        <span class="leader-value">94%</span>
+                    </div>
+                    <div class="module-bar">
+                        <div class="module-progress karl" style="width: 94%"></div>
+                    </div>
+                    <div class="module-quote">"Now with 47 monitoring graphs!" — Karl</div>
+                </div>
+                
+                <div class="module-card" data-module="tariff">
+                    <div class="module-header">
+                        <span class="module-icon">💾</span>
+                        <span class="module-name">tariff</span>
+                    </div>
+                    <div class="module-subtitle">Storage Module</div>
+                    <div class="module-leader">
+                        <span class="leader-label">Dashboard Coverage:</span>
+                        <span class="leader-value">88%</span>
+                    </div>
+                    <div class="module-bar">
+                        <div class="module-progress karl" style="width: 88%"></div>
+                    </div>
+                    <div class="module-quote">"Every byte deserves visualization" — Karl</div>
+                </div>
+                
+                <div class="module-card" data-module="event-day">
+                    <div class="module-header">
+                        <span class="module-icon">📅</span>
+                        <span class="module-name">event-day</span>
+                    </div>
+                    <div class="module-subtitle">Event Service Module</div>
+                    <div class="module-leader">
+                        <span class="leader-label">Dashboard Coverage:</span>
+                        <span class="leader-value">91%</span>
+                    </div>
+                    <div class="module-bar">
+                        <div class="module-progress karl" style="width: 91%"></div>
+                    </div>
+                    <div class="module-quote">"I scheduled a dashboard for Tuesdays" — Karl</div>
+                </div>
+                
+                <div class="module-card" data-module="tariff-web">
+                    <div class="module-header">
+                        <span class="module-icon">🌐</span>
+                        <span class="module-name">tariff-web</span>
+                    </div>
+                    <div class="module-subtitle">Configuration UI</div>
+                    <div class="module-leader">
+                        <span class="leader-label">Dashboard Coverage:</span>
+                        <span class="leader-value">97%</span>
+                    </div>
+                    <div class="module-bar">
+                        <div class="module-progress karl" style="width: 97%"></div>
+                    </div>
+                    <div class="module-quote">"The UI is basically a dashboard now" — Karl</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Karl's Greatest Hits -->
+        <section class="quotes-section">
+            <h2 class="section-title">
+                <span class="title-icon">💬</span>
+                Karl's Greatest Hits
+            </h2>
+            
+            <div class="quote-carousel" id="quoteCarousel">
+                <div class="quote-card active">
+                    <div class="quote-text">"You know what this needs? A dashboard."</div>
+                    <div class="quote-context">— Every meeting, ever</div>
+                </div>
+                <div class="quote-card">
+                    <div class="quote-text">"I made a dashboard to track our dashboards."</div>
+                    <div class="quote-context">— Sprint planning, Q3 2025</div>
+                </div>
+                <div class="quote-card">
+                    <div class="quote-text">"The dashboard is the documentation."</div>
+                    <div class="quote-context">— Code review feedback</div>
+                </div>
+                <div class="quote-card">
+                    <div class="quote-text">"I'll just add a quick dashboard for that."</div>
+                    <div class="quote-context">— 3 weeks later...</div>
+                </div>
+                <div class="quote-card">
+                    <div class="quote-text">"This graph would look better in a dashboard."</div>
+                    <div class="quote-context">— Slack, 2am</div>
+                </div>
+            </div>
+            <div class="quote-dots" id="quoteDots"></div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <div class="footer-message">
+                <p class="goodbye-text">👋 We'll miss you, Karl!</p>
+                <p class="footer-note">May your future be filled with infinite dashboards</p>
+            </div>
+            <div class="footer-credits">
+                <p>Built with ❤️ by the Tariff Team</p>
+                <p class="version">Dashboard v∞.0.0 | Last updated: Just now (Karl added another graph)</p>
+            </div>
+            <div class="team-signatures">
+                <span class="signature">Glenn</span>
+                <span class="signature">Judicael</span>
+                <span class="signature">Annika</span>
+                <span class="signature">Helar</span>
+                <span class="signature">Hener</span>
+                <span class="signature">Siiri</span>
+                <span class="signature">Joel</span>
+                <span class="signature">Mark</span>
+                <span class="signature">Jacek</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Achievement Unlock Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="achievement-modal" id="achievementModal">
+            <button class="modal-close" id="modalClose">×</button>
+            <div class="modal-content">
+                <div class="modal-icon" id="modalIcon">🏆</div>
+                <h3 class="modal-title" id="modalTitle">Achievement Title</h3>
+                <p class="modal-description" id="modalDescription">Achievement description</p>
+                <div class="modal-holder">
+                    <span class="holder-label">Unlocked by:</span>
+                    <span class="holder-name" id="modalHolder">Karl Marti</span>
+                </div>
+                <div class="modal-date" id="modalDate">Unlocked: Jan 2024</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
