@@ -1032,28 +1032,62 @@ function initScrollAnimations() {
 // ============================================
 
 let konamiCode = [];
-const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+const konamiPattern = ['arrowup', 'arrowup', 'arrowdown', 'arrowdown', 'arrowleft', 'arrowright', 'arrowleft', 'arrowright', 'b', 'a'];
+
+function triggerEasterEgg() {
+    // Easter egg: massive confetti
+    for (let i = 0; i < 5; i++) {
+        setTimeout(triggerConfetti, i * 200);
+    }
+
+    // Change title temporarily
+    const title = document.querySelector('.title-text');
+    const originalText = title.textContent;
+    title.textContent = 'DASHBOARD FOREVER!';
+    setTimeout(() => {
+        title.textContent = originalText;
+    }, 3000);
+
+    // Reset the code
+    konamiCode = [];
+}
 
 document.addEventListener('keydown', (e) => {
-    konamiCode.push(e.key);
+    // Convert to lowercase for case-insensitive matching
+    konamiCode.push(e.key.toLowerCase());
     konamiCode = konamiCode.slice(-10);
 
     if (konamiCode.join(',') === konamiPattern.join(',')) {
-        // Easter egg: massive confetti
-        for (let i = 0; i < 5; i++) {
-            setTimeout(triggerConfetti, i * 200);
-        }
-
-        // Change title temporarily
-        const title = document.querySelector('.title-text');
-        const originalText = title.textContent;
-        title.textContent = 'DASHBOARD FOREVER!';
-        setTimeout(() => {
-            title.textContent = originalText;
-        }, 3000);
+        triggerEasterEgg();
     }
 });
+
+// Secret backup: Triple-click on any crown emoji triggers it too!
+let crownClicks = 0;
+let crownClickTimer = null;
+
+document.addEventListener('click', (e) => {
+    if (e.target.textContent.includes('👑') || e.target.closest('.crown-icon')) {
+        crownClicks++;
+
+        if (crownClickTimer) clearTimeout(crownClickTimer);
+
+        crownClickTimer = setTimeout(() => {
+            crownClicks = 0;
+        }, 500);
+
+        if (crownClicks >= 3) {
+            triggerEasterEgg();
+            crownClicks = 0;
+        }
+    }
+});
+
+// Also expose it in console for easy testing
+window.dashboardForever = triggerEasterEgg;
 
 console.log('%c👑 THE DASHBOARD KING 👑', 'font-size: 24px; color: gold; font-weight: bold;');
 console.log('%cThis dashboard was built with love for Karl Marti', 'font-size: 14px; color: #8b5cf6;');
 console.log('%cTry the Konami code for a surprise! ↑↑↓↓←→←→BA', 'font-size: 12px; color: #06b6d4;');
+console.log('%cOr triple-click any 👑 crown!', 'font-size: 12px; color: #ffd700;');
+console.log('%cOr type: dashboardForever() in the console', 'font-size: 12px; color: #10b981;');
